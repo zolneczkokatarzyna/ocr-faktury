@@ -1,8 +1,20 @@
+export const config = {
+  api: {
+    bodyParser: true,
+  },
+};
 
 export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Only POST allowed" });
+  }
+
   try {
     const { file_url } = req.body;
-    if (!file_url) return res.status(400).json({ error: "file_url missing" });
+
+    if (!file_url) {
+      return res.status(400).json({ error: "Missing file_url" });
+    }
 
     const response = await fetch(file_url);
     const buffer = await response.arrayBuffer();
