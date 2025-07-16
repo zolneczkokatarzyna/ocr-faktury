@@ -2,7 +2,7 @@
 {
   "version": 2,
   "functions": {
-    "api/parse-faktura.js": {
+    "parse-faktura.js": {
       "memory": 1024,
       "maxDuration": 10
     }
